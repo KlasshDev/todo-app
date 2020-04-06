@@ -1,0 +1,57 @@
+ToDo Matrix
+
+1) Managing a DataBase for to do items. 
+
+Entity - The description of an item in the DataBase
+Record - is a single instance of an Entity
+PK - Primary Key
+FK - Foregion Key
+
+"""
+Entities in a ToDo App
+"""
+
+.:TASK
+[PK ][Task ID           ][Serial        ]
+[   ][Desciption        ][TEXT          ]
+[   ][NOTES             ][TEXT          ]
+[   ][Create Date       ][DateTime      ]
+[   ][Reoccuring        ][Int/Booleen   ]
+[FK ][Context ID        ][Int           ]
+[FK ][Note ID           ][Int           ]
+[FK ][Project ID        ][Int           ]
+[   ][Archived          ][Int/Booleen   ]
+[   ][Last Changed Date ][DateTime      ]
+[   ][Due Date          ][DateTime      ]
+
+.: PROJECT
+[PK ][Project ID    ][Serial    ]
+[   ][Title         ][TEXT      ]
+[   ][Description   ][TEXT      ]
+[FK ][Task ID       ][Int       ]
+[FK ][Context ID    ][Int       ]
+[FK ][Note ID       ][Int       ]
+[FK ][Task ID       ][Int       ]
+[   ][Created Date  ][DateTime  ]
+[   ][Modified Date ][DateTime  ]
+
+
+.:CONTEXT
+[PK ][Context ID    ][Serial    ]
+[   ][Description   ][text      ]
+[   ][Created Date  ][DateTime  ]
+[   ][Last Changed  ][DateTime  ]
+
+
+
+.:Supporting notes
+[PK ][Note ID       ][Serial]
+[   ][Title         ][TEXT  ]
+[   ][Description   ][TEXT  ]
+[FK ][Task ID       ][Int   ]
+[FK ][Context ID    ][Int   ]
+
+
+2) Handling the Task
+
+CRUD (Create, Read, Update, Delete)
