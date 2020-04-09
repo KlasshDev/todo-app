@@ -31,7 +31,6 @@ Entities in a ToDo App
 [FK ][Task ID       ][Int       ]
 [FK ][Context ID    ][Int       ]
 [FK ][Note ID       ][Int       ]
-[FK ][Task ID       ][Int       ]
 [   ][Created Date  ][DateTime  ]
 [   ][Modified Date ][DateTime  ]
 
@@ -44,7 +43,7 @@ Entities in a ToDo App
 
 
 
-.:Supporting notes
+.:Notes
 [PK ][Note ID       ][Serial]
 [   ][Title         ][TEXT  ]
 [   ][Description   ][TEXT  ]

@@ -1,0 +1,108 @@
+# #efecec = 239/255, 236/255, 236/255, 1
+# #62929a = 98/255,146/255,154/255, 1
+# #5c5757 = 92/255, 87/255, 87/255, 1
+# #363434 = 54/255, 52/255, 52/255, 1
+
+# Themed Items
+<BottomBar@Widget>:
+    BoxLayout:
+        size:root.size
+        pos: root.pos
+        canvas:
+            Color:
+                rgba: 92/255, 87/255, 87/255, 1
+            Rectangle:
+                pos: 0,0
+                size: root.width,35
+
+<ProjectWidget@Widget>:
+    FloatLayout:
+        size: root.width, 35
+        padding: 10
+
+        Button:
+            id:Projects
+            size: 20,20
+            background_normal: ''
+            background_color: 92/255, 87/255, 87/255, 1
+            size_hint: None,None
+            pos_hint:{'right':.128, 'y':0.2}
+        Image:
+            source: './img/projects.png'
+            size_hint_y: None
+            size_hint_x: None
+            width: 20
+            height: 20
+            pos_hint:{'right':.128, 'y':0.2}
+
+        # Context Button
+        Button:
+            id:Context
+            text:"@"
+            font_size: 20
+            color: 0,0,0, 1
+            background_normal: ''
+            background_color: 92/255, 87/255, 87/255, 1
+            size: 20,20
+            size_hint: None,None
+            pos_hint:{'right':.4, 'y':0.2}
+
+        # Home Button
+        Button:
+            id:Home
+            background_normal: ''
+            background_color: 92/255, 87/255, 87/255, 1
+            size: 20,20
+            size_hint: None,None
+            pos_hint:{'right':.7, 'y':0.2}
+        Image:
+            source: './img/InBoxDeactive.png'
+            size_hint_y: None
+            size_hint_x: None
+            width: 25
+            height: 25
+            pos_hint:{'right':.71, 'y':0.15}
+
+        # Notes Button
+        Button:
+            id:Notes
+            background_normal: ''
+            background_color: 92/255, 87/255, 87/255, 1
+            size: 20,20
+            size_hint: None,None
+            pos_hint:{'right':.95, 'y':0.2}
+        Image:
+            source: './img/NotesDeactive.png'
+            size_hint_y: None
+            size_hint_x: None
+            width: 25
+            height: 20
+            pos_hint:{'right':.95, 'y':0.2}
+    
+
+WindowManager:
+    ProjectPage:
+
+<ProjectPage>:
+    name:"Projects"
+    canvas.before:
+        Color:
+            rgba: 54/255, 52/255, 52/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        size: root.width, root.height
+        Label:
+            size_hint: .01, .01
+            pos_hint: {"x": .5,"top": .98}
+            
+            text:"Projects"
+            font_size: 25 
+            color: 98/255,146/255,154/255, 1 # #62929a
+
+        BottomBar:
+        ProjectWidget:
+
+
