@@ -15,6 +15,7 @@ from kivy.uix.widget import Widget
 from kivy.graphics import Rectangle, Color
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
+from kivy.properties import ObjectProperty
 
 
 
@@ -25,11 +26,25 @@ Config.set('graphics', 'height', '600')
 
 class ProjectPage(Screen):
     pass
-class WindowManager(ScreenManager):
+
+class ContextPage(Screen):
     pass
+
+class InBoxPage(Screen):
+    pass
+class NotesPage(Screen):
+    pass
+class WindowManager(ScreenManager):
+    def __init__(self, **kwargs):
+        super(WindowManager, self).__init__(**kwargs)
+
 class TodoMatrix(App):
     def build(self):
-        return ProjectPage()
+        return WindowManager()
+
+
+kv = Builder.load_file("todomatrix.kv")
+sm = WindowManager()
 
 if __name__ == "__main__":
     TodoMatrix().run()

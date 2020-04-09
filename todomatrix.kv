@@ -4,7 +4,10 @@
 # #363434 = 54/255, 52/255, 52/255, 1
 
 # Themed Items
-<BottomBar@Widget>:
+<NavBar@Widget>:
+
+
+    # Gray bar to hold the nav buttons
     BoxLayout:
         size:root.size
         pos: root.pos
@@ -14,19 +17,20 @@
             Rectangle:
                 pos: 0,0
                 size: root.width,35
-
-<ProjectWidget@Widget>:
+    # Nav Buttons
     FloatLayout:
         size: root.width, 35
         padding: 10
 
         Button:
-            id:Projects
+            id:projects
             size: 20,20
             background_normal: ''
             background_color: 92/255, 87/255, 87/255, 1
             size_hint: None,None
             pos_hint:{'right':.128, 'y':0.2}
+            on_release:
+                app.root.current = "ProjectPage"
         Image:
             source: './img/projects.png'
             size_hint_y: None
@@ -37,8 +41,10 @@
 
         # Context Button
         Button:
-            id:Context
+            id:context
             text:"@"
+            on_release:
+                app.root.current = "ContextPage"
             font_size: 20
             color: 0,0,0, 1
             background_normal: ''
@@ -47,14 +53,17 @@
             size_hint: None,None
             pos_hint:{'right':.4, 'y':0.2}
 
-        # Home Button
+
+        # inbox Button
         Button:
-            id:Home
+            id:inbox
             background_normal: ''
             background_color: 92/255, 87/255, 87/255, 1
             size: 20,20
             size_hint: None,None
             pos_hint:{'right':.7, 'y':0.2}
+            on_release:
+                app.root.current = "InBoxPage"
         Image:
             source: './img/InBoxDeactive.png'
             size_hint_y: None
@@ -65,12 +74,15 @@
 
         # Notes Button
         Button:
-            id:Notes
+            id:notes
             background_normal: ''
             background_color: 92/255, 87/255, 87/255, 1
             size: 20,20
             size_hint: None,None
             pos_hint:{'right':.95, 'y':0.2}
+            on_release:
+                app.root.current = "NotesPage"
+
         Image:
             source: './img/NotesDeactive.png'
             size_hint_y: None
@@ -79,12 +91,21 @@
             height: 20
             pos_hint:{'right':.95, 'y':0.2}
     
+# Pages Set up.
 
-WindowManager:
+<WindowManager>:
     ProjectPage:
+        name: "ProjectPage"
+    ContextPage:
+        name:"ContextPage"
+    InBoxPage:
+        name:"InBoxPage"
+    NotesPage:
+        name:"NotesPage"
+
 
 <ProjectPage>:
-    name:"Projects"
+    name:"ProjectPage"
     canvas.before:
         Color:
             rgba: 54/255, 52/255, 52/255, 1
@@ -102,7 +123,69 @@ WindowManager:
             font_size: 25 
             color: 98/255,146/255,154/255, 1 # #62929a
 
-        BottomBar:
-        ProjectWidget:
+        NavBar:
+#        ProjectWidget:
 
 
+<ContextPage>:
+    name:"ContextPage"
+    canvas.before:
+        Color:
+            rgba: 54/255, 52/255, 52/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        size: root.width, root.height
+        Label:
+            size_hint: .01, .01
+            pos_hint: {"x": .5,"top": .98}
+            
+            text:"Context"
+            font_size: 25 
+            color: 98/255,146/255,154/255, 1 # #62929a
+
+        NavBar:
+
+<InBoxPage>:
+    name:"InBoxPage"
+    canvas.before:
+        Color:
+            rgba: 54/255, 52/255, 52/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        size: root.width, root.height
+        Label:
+            size_hint: .01, .01
+            pos_hint: {"x": .5,"top": .98}
+            
+            text:"InBox"
+            font_size: 25 
+            color: 98/255,146/255,154/255, 1 # #62929a
+
+        NavBar:
+
+<NotesPage>:
+    name:"NotesPage"
+    canvas.before:
+        Color:
+            rgba: 54/255, 52/255, 52/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        size: root.width, root.height
+        Label:
+            size_hint: .01, .01
+            pos_hint: {"x": .5,"top": .98}
+            
+            text:"Notes:"
+            font_size: 25 
+            color: 98/255,146/255,154/255, 1 # #62929a
+
+        NavBar:
