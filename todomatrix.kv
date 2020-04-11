@@ -31,13 +31,13 @@
             pos_hint:{'right':.128, 'y':0.2}
             on_release:
                 app.root.current = "ProjectPage"
-        Image:
-            source: './img/projects.png'
-            size_hint_y: None
-            size_hint_x: None
-            width: 20
-            height: 20
-            pos_hint:{'right':.128, 'y':0.2}
+            Image:
+                source: './img/projects.png'
+                size: 20,20
+                center_y: self.parent.center_y
+                center_x: self.parent.center_x
+                size: self.parent.height+5, self.parent.width+5
+                allow_stretch: True
 
         # Context Button
         Button:
@@ -45,7 +45,9 @@
             text:"@"
             on_release:
                 app.root.current = "ContextPage"
+                source: './img/projects.png'
             font_size: 20
+            text_size: self.size
             color: 0,0,0, 1
             background_normal: ''
             background_color: 92/255, 87/255, 87/255, 1
@@ -64,13 +66,14 @@
             pos_hint:{'right':.7, 'y':0.2}
             on_release:
                 app.root.current = "InBoxPage"
-        Image:
-            source: './img/InBoxDeactive.png'
-            size_hint_y: None
-            size_hint_x: None
-            width: 25
-            height: 25
-            pos_hint:{'right':.71, 'y':0.15}
+
+            Image:
+                source: './img/InBoxDeactive.png'
+                size: 20,20
+                center_y: self.parent.center_y
+                center_x: self.parent.center_x
+                size: (self.parent.height)+5, (self.parent.width)+5
+                allow_stretch: True
 
         # Notes Button
         Button:
@@ -82,27 +85,20 @@
             pos_hint:{'right':.95, 'y':0.2}
             on_release:
                 app.root.current = "NotesPage"
-
-        Image:
-            source: './img/NotesDeactive.png'
-            size_hint_y: None
-            size_hint_x: None
-            width: 25
-            height: 20
-            pos_hint:{'right':.95, 'y':0.2}
+            Image:
+                source: './img/NotesDeactive.png'
+                center_y: self.parent.center_y
+                center_x: self.parent.center_x
+                size: self.parent.height+5, self.parent.width+5
+                allow_stretch: True
     
 # Pages Set up.
 
 <WindowManager>:
     ProjectPage:
-        name: "ProjectPage"
     ContextPage:
-        name:"ContextPage"
     InBoxPage:
-        name:"InBoxPage"
     NotesPage:
-        name:"NotesPage"
-
 
 <ProjectPage>:
     name:"ProjectPage"
@@ -124,7 +120,6 @@
             color: 98/255,146/255,154/255, 1 # #62929a
 
         NavBar:
-#        ProjectWidget:
 
 
 <ContextPage>:
@@ -168,6 +163,7 @@
             color: 98/255,146/255,154/255, 1 # #62929a
 
         NavBar:
+
 
 <NotesPage>:
     name:"NotesPage"

@@ -7,7 +7,7 @@ Date: 2020.04.08
 import kivy
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.config import Config
@@ -15,7 +15,6 @@ from kivy.uix.widget import Widget
 from kivy.graphics import Rectangle, Color
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
-from kivy.properties import ObjectProperty
 
 
 
@@ -40,11 +39,11 @@ class WindowManager(ScreenManager):
 
 class TodoMatrix(App):
     def build(self):
-        return WindowManager()
+        return sm
 
 
 kv = Builder.load_file("todomatrix.kv")
-sm = WindowManager()
+sm = WindowManager(transition=NoTransition())
 
 if __name__ == "__main__":
     TodoMatrix().run()
