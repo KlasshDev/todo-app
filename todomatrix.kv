@@ -4,9 +4,8 @@
 # #363434 = 54/255, 52/255, 52/255, 1
 
 # Themed Items
+
 <NavBar@Widget>:
-
-
     # Gray bar to hold the nav buttons
     BoxLayout:
         size:root.size
@@ -18,61 +17,67 @@
                 pos: 0,0
                 size: root.width,35
     # Nav Buttons
+
+
     FloatLayout:
         size: root.width, 35
         padding: 10
 
         Button:
             id:projects
-            size: 20,20
+            size: 25,25
             background_normal: ''
             background_color: 92/255, 87/255, 87/255, 1
             size_hint: None,None
-            pos_hint:{'right':.128, 'y':0.2}
+            pos_hint:{'right':.128, 'y':0.1}
             on_release:
+                root.currentScreenIcon('Project')
                 app.root.current = "ProjectPage"
             Image:
                 source: './img/projects.png'
-                size: 20,20
+                size: 25,25
                 center_y: self.parent.center_y
                 center_x: self.parent.center_x
-                size: self.parent.height+5, self.parent.width+5
+                size: self.parent.height, self.parent.width
                 allow_stretch: True
 
         # Context Button
         Button:
             id:context
-            text:"@"
             on_release:
+                root.currentScreenIcon('Context')
                 app.root.current = "ContextPage"
-                source: './img/projects.png'
-            font_size: 20
-            text_size: self.size
-            color: 0,0,0, 1
             background_normal: ''
             background_color: 92/255, 87/255, 87/255, 1
-            size: 20,20
+            size: 25,25
             size_hint: None,None
-            pos_hint:{'right':.4, 'y':0.2}
+            pos_hint:{'right':.4, 'y':0.1}
 
+            text: '@'
+            font_size: 20
+            text_size: self.size
+            halign: 'center'
+            valign: 'top'
+            color: 0,0,0, 1
 
         # inbox Button
         Button:
             id:inbox
             background_normal: ''
             background_color: 92/255, 87/255, 87/255, 1
-            size: 20,20
+            size: 25,25
             size_hint: None,None
-            pos_hint:{'right':.7, 'y':0.2}
+            pos_hint:{'right':.7, 'y':0.1}
             on_release:
+                root.currentScreenIcon('InBox')
                 app.root.current = "InBoxPage"
 
             Image:
-                source: './img/InBoxDeactive.png'
+                source: root.inboxDeactive
                 size: 20,20
                 center_y: self.parent.center_y
                 center_x: self.parent.center_x
-                size: (self.parent.height)+5, (self.parent.width)+5
+                size: (self.parent.height), (self.parent.width)
                 allow_stretch: True
 
         # Notes Button
@@ -80,17 +85,19 @@
             id:notes
             background_normal: ''
             background_color: 92/255, 87/255, 87/255, 1
-            size: 20,20
+            size: 25,25
             size_hint: None,None
-            pos_hint:{'right':.95, 'y':0.2}
+            pos_hint:{'right':.95, 'y':0.1}
             on_release:
+                root.currentScreenIcon('Notes')
                 app.root.current = "NotesPage"
             Image:
                 source: './img/NotesDeactive.png'
                 center_y: self.parent.center_y
                 center_x: self.parent.center_x
-                size: self.parent.height+5, self.parent.width+5
+                size: self.parent.height, self.parent.width
                 allow_stretch: True
+
     
 # Pages Set up.
 

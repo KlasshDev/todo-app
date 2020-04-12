@@ -15,6 +15,7 @@ from kivy.uix.widget import Widget
 from kivy.graphics import Rectangle, Color
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
+from kivy.properties import StringProperty
 
 
 
@@ -22,7 +23,27 @@ from kivy.lang import Builder
 Config.set('graphics', 'width', '300')
 Config.set('graphics', 'height', '600')
 
+class NavBar(Widget):
+    inboxpng = str('./img/InBox.png')
+    inboxDeactive = str('./img/InBoxDeactive.png')
+    notespng = str('./img/Notes.png')
+    notesDeactive = str('./img/NotesDeactive.png')
+    projectpng = str('./img/projects.png')
+    projectpng = str('./img/ProjectsDeactive.png')
 
+    def currentScreenIcon(self, event):
+        print(self,event)
+        self.event = event
+
+        if self.event == "InBox":
+            print("You Pressed the Inbox button!")
+            self.inboxDeactive = str('./img/InBox.png')
+        elif self.event == "Project":
+            print("You Pressed the Project Button!")
+        elif self.event == "Context":
+            print("You Pressed the Context Button!")
+        else:
+            print("You pressed the Notes button!")
 class ProjectPage(Screen):
     pass
 
@@ -42,8 +63,11 @@ class TodoMatrix(App):
         return sm
 
 
+
+
 kv = Builder.load_file("todomatrix.kv")
 sm = WindowManager(transition=NoTransition())
 
 if __name__ == "__main__":
     TodoMatrix().run()
+
