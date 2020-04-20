@@ -4,18 +4,58 @@
 # #363434 = 54/255, 52/255, 52/255, 1
 
 # Themed Items
+<AddButton>:
+    pos_hint:{"x":.85,"top":.96}
+    size_hint: .15,.03
+    text: "+ Item"
+    color: 98/255,146/255,154/255, 1
+    background_normal: ''
+    background_color: 54/255, 52/255, 52/255, 1
+    on_release:
+        self.fire_popup()
+
+<InputField>:
+    size_hint: .90, .25
+    # size: 300,150
+    pos_hint:{"top":.90,"right":.96}
+    id: Input
+    title: "Input"
+
+    GridLayout:
+        # top: self.height and root.y + root.height * .94
+
+        cols: 1
+
+        TextInput:
+            background_color: 54/255, 52/255, 52/255, 1
+
+        GridLayout:
+            cols: 2
+            row_force_default: True
+            row_default_height: 10
+            Button:
+                background_normal: ''
+                background_color: 92/255, 87/255, 87/255, 1                
+                text: "+ Add"
+
+            Button:
+                text: "Cancel"
+                background_normal: ''
+                background_color: 92/255, 87/255, 87/255, 1
+                on_release: Input.dismiss()
+
 
 <NavBar@Widget>:
     # Gray bar to hold the nav buttons
     BoxLayout:
-        size:root.size
-        pos: root.pos
+        size:root.width,35
+        pos_hint:{'right':1,'top':1}
         canvas:
             Color:
                 rgba: 92/255, 87/255, 87/255, 1
             Rectangle:
-                pos: 0,0
-                size: root.width,35
+                # pos: 0,0
+                size: self.size
     # Nav Buttons
 
 
@@ -107,6 +147,8 @@
     InBoxPage:
     NotesPage:
 
+
+
 <ProjectPage>:
     name:"ProjectPage"
     canvas.before:
@@ -126,7 +168,12 @@
             font_size: 25 
             color: 98/255,146/255,154/255, 1 # #62929a
 
+
         NavBar:
+        AddButton:
+
+
+
 
 
 <ContextPage>:
@@ -149,6 +196,7 @@
             color: 98/255,146/255,154/255, 1 # #62929a
 
         NavBar:
+        AddButton:
 
 <InBoxPage>:
     name:"InBoxPage"
@@ -170,6 +218,7 @@
             color: 98/255,146/255,154/255, 1 # #62929a
 
         NavBar:
+        AddButton:
 
 
 <NotesPage>:
@@ -192,3 +241,4 @@
             color: 98/255,146/255,154/255, 1 # #62929a
 
         NavBar:
+        AddButton:

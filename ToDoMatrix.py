@@ -3,9 +3,10 @@ Title: ToDo Matrix
 Author: Cameron Schweeder
 Date: 2020.04.08
 """
-
+import sqlite3
 import kivy
 from kivy.app import App
+from kivy.uix.popup import Popup
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.floatlayout import FloatLayout
@@ -16,13 +17,23 @@ from kivy.graphics import Rectangle, Color
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.properties import StringProperty
+from sqliteinterface import databaseInteract
+from kivy.uix.button import Button
 
-
+db = databaseInteract("todomatrix.db")
 
 
 Config.set('graphics', 'width', '300')
 Config.set('graphics', 'height', '600')
 
+class AddButton(Button):
+
+    def fire_popup(self):
+        pops=InputField()
+        pops.open()
+class InputField(Popup):
+    pass
+    
 class NavBar(Widget):
     inboxpng = str('./img/InBox.png')
     inboxDeactive = str('./img/InBoxDeactive.png')
@@ -58,7 +69,7 @@ class WindowManager(ScreenManager):
     def __init__(self, **kwargs):
         super(WindowManager, self).__init__(**kwargs)
 
-class TodoMatrix(App):
+class TodoMatrixMain(App):
     def build(self):
         return sm
 
@@ -69,5 +80,5 @@ kv = Builder.load_file("todomatrix.kv")
 sm = WindowManager(transition=NoTransition())
 
 if __name__ == "__main__":
-    TodoMatrix().run()
+    TodoMatrixMain().run()
 
