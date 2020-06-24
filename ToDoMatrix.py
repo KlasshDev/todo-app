@@ -16,7 +16,6 @@ from kivy.uix.widget import Widget
 from kivy.graphics import Rectangle, Color
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
-from kivy.properties import StringProperty
 from sqliteinterface import databaseInteract
 from kivy.uix.button import Button
 
